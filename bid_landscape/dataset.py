@@ -26,13 +26,14 @@ class Dataset:
 		max_price = -1
 		min_price = 10000
 		fi = open(self.file_path, 'r')
+		# 参竞  曝光  点击  到站  出价
 		for line in fi:
 			li = [int(x) for x in line.split("\t")]
 			if self.camp_id < 0:
 				li.append(-1)
 			self.dataset.append(li)
 			y = li[0]
-			mp = li[1]
+			mp = li[4]
 			size += 1
 			cost_sum += mp
 			max_price = mp if mp > max_price else max_price
@@ -68,10 +69,11 @@ class Dataset:
 		min_price = 10000
 		for data in self.dataset:
 			y = data[0]
-			mp = data[1]
+			mp = data[4]
 			size += 1
 			cost_sum += mp
 			max_price = mp if mp > max_price else max_price
+			min_price = mp if mp < min_price else min_price
 			clk_sum += y
 		self.statistics['size'] = size
 		self.statistics['cost_sum'] = cost_sum
