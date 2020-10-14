@@ -125,7 +125,7 @@ class Dataset:
 		return self.statistics
 
 	def get_landscape(self):
-		if self.landscape == None:
+		if self.landscape:
 			print("ERROR: Please init landscape first. [Dataset.init_landscape(landscape)]")
 		return self.landscape
 
@@ -158,6 +158,9 @@ class Dataset:
 		return self.statistics['size']
 
 	def get_max_price(self):
+		return self.statistics['max_price']
+
+	def get_min_price(self):
 		return self.statistics['max_price']
 
 	def reached_tail(self, iter_id):  # judge whether the last data have been reached
